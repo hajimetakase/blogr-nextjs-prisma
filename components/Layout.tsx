@@ -3,12 +3,14 @@ import Header from "./Header";
 
 type Props = {
   children: ReactNode;
+    title?: string
 };
 
-const Layout: React.FC<Props> = (props) => (
+const Layout: React.FC<Props> = (  {children,
+                                   title = 'TypeScript Next.js Stripe Example'}) => (
   <div>
     <Header />
-    <div className="layout">{props.children}</div>
+    <div className="layout">{children}</div>
     <style jsx global>{`
       html {
         box-sizing: border-box;
