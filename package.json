@@ -21,7 +21,9 @@
     "@stripe/react-stripe-js": "1.13.0",
     "@stripe/stripe-js": "1.42.0",
     "stripe": "10.14.0",
-    "swr": "^2.0.0"
+    "swr": "^2.0.0",
+    "micro": "^9.4.1",
+    "micro-cors": "^0.1.1"
   },
   "devDependencies": {
     "@types/node": "17.0.14",
