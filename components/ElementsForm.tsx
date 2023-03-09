@@ -87,11 +87,15 @@ const ElementsForm: FC<{
         }
 
         console.log("handleSubmit3 await")
+        const returnURL = process.env.NEXT_PUBLIC_BASE_URL + '/donate-with-elements'
+        console.log(process.env.NEXT_PUBLIC_BASE_URL)
+        console.log(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+        console.log(returnURL)
         // Use your card Element with other Stripe.js APIs
         const { error } = await stripe!.confirmPayment({
             elements,
             confirmParams: {
-                return_url: process.env.BASE_URL + '/donate-with-elements',
+                return_url: returnURL,
                 //return_url: 'http://localhost:3000/donate-with-elements',
                 payment_method_data: {
                     billing_details: {
