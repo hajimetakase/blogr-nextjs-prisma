@@ -95,6 +95,7 @@ const ElementsForm: FC<{
                     },
                 },
             },
+            // redirect: 'if_required'
         })
 
         if (error) {

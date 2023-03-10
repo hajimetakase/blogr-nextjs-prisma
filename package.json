@@ -5,7 +5,11 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "1": "tsx src/1-one-to-one.ts",
+    "2": "tsx src/2-one-to-many.ts",
+    "3": "tsx src/3-many-to-many.ts",
+    "4": "tsx src/4-many-to-many.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,26 +17,27 @@
   "dependencies": {
     "@next-auth/prisma-adapter": "1.0.5",
     "@prisma/client": "4.11.0",
+    "@stripe/react-stripe-js": "1.13.0",
+    "@stripe/stripe-js": "1.42.0",
+    "@tailwindcss/forms": "^0.4.0",
+    "bcryptjs": "^2.4.3",
+    "micro": "^9.4.1",
+    "micro-cors": "^0.1.1",
     "next": "12.0.10",
     "next-auth": "4.20.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-markdown": "8.0.0",
-    "@stripe/react-stripe-js": "1.13.0",
-    "@stripe/stripe-js": "1.42.0",
     "stripe": "10.14.0",
-    "swr": "^2.0.0",
-    "micro": "^9.4.1",
-    "micro-cors": "^0.1.1",
-    "@tailwindcss/forms": "^0.4.0"
+    "swr": "^2.0.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@types/node": "17.0.14",
     "@types/react": "17.0.38",
     "prisma": "4.11.0",
-    "typescript": "4.5.5",
-    "tailwindcss": "^3.0.18"
+    "tailwindcss": "^3.0.18",
+    "tsx": "^3.12.3",
+    "typescript": "4.5.5"
   }
 }
-
-
