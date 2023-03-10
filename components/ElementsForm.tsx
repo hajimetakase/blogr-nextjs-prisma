@@ -63,11 +63,11 @@ const ElementsForm: FC<{
         })
 
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
-        console.log("handleSubmit")
+        console.log("handleSubmit desu")
         e.preventDefault()
         // Abort if form isn't valid
-        if (!e.currentTarget.reportValidity()){console.log("handleSubmit error1"); return;}
-        if (!elements) {console.log("handleSubmit error2"); return;}
+        if (!e.currentTarget.reportValidity()) return
+        if (!elements) return
         setPayment({ status: 'processing' })
 
         // Create a PaymentIntent with the specified amount.
@@ -75,28 +75,20 @@ const ElementsForm: FC<{
             amount: input.customDonation,
             payment_intent_id: paymentIntent?.id,
         })
-        console.log("handleSubmit2")
-        console.log(response)
         setPayment(response)
 
         if (response.statusCode === 500) {
-            console.log("handleSubmit2 error")
             setPayment({ status: 'error' })
             setErrorMessage(response.message)
             return
         }
 
-        console.log("handleSubmit3 await")
-        const returnURL = process.env.NEXT_PUBLIC_BASE_URL + '/donate-with-elements'
-        console.log(process.env.NEXT_PUBLIC_BASE_URL)
-        console.log(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
-        console.log(returnURL)
         // Use your card Element with other Stripe.js APIs
+        const returnUrl =  process.env.NEXT_PUBLIC_BASE_URL + '/donate-with-elements'
         const { error } = await stripe!.confirmPayment({
             elements,
             confirmParams: {
-                return_url: returnURL,
-                //return_url: 'http://localhost:3000/donate-with-elements',
+                return_url: returnUrl,
                 payment_method_data: {
                     billing_details: {
                         name: input.cardholderName,
@@ -105,9 +97,6 @@ const ElementsForm: FC<{
             },
         })
 
-        console.log("handleSubmit4")
-        console.log(error)
-        console.log(paymentIntent)
         if (error) {
             setPayment({ status: 'error' })
             setErrorMessage(error.message ?? 'An unknown error occurred')
